@@ -1,0 +1,33 @@
+<apex:page>
+
+    <head>
+        <apex:slds />
+    </head>
+
+    <body class="slds-scope">
+        <div class="slds-card slds-var-p-around_small">
+            <p>Enter a latitude value:</p>
+            <input type="text" id="latitude" />
+            <br/>
+            <p>Enter a longitude value:</p>
+            <input type="text" id="longitude" />
+            <br/>
+            <br/>
+            <button class="slds-button slds-button_brand" onclick="publishMC()">Publish</button>
+        </div>
+    </body>
+
+    <script>
+        // Load the MessageChannel token in a variable
+        var SIMPLEMC = "{!$MessageChannel.SimpleMessageChannel__c}";
+        function publishMC() {
+            const message = {
+                Latitude: document.getElementById('latitude').value,
+                Longitude: document.getElementById('longitude').value
+            };
+            sforce.one.publish(SIMPLEMC, message);
+        }
+
+    </script>
+
+</apex:page>

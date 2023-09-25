@@ -1,0 +1,15 @@
+<template>
+    <lightning-card icon-name="standard:client" variant="base">
+        <div slot="title">The Subscriber</div>
+        <lightning-button
+            label="Subscribe"
+            slot="actions"
+            onclick={subscribeToMessageChannel}
+        ></lightning-button>
+        <div class="slds-var-p-around_small" style="font-weight: 600">
+            Latitude: {latitude}
+            <br />
+            Longitude: {longitude}
+        </div>
+    </lightning-card>
+</template>

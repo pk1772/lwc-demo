@@ -1,0 +1,19 @@
+<template>
+    <lightning-card icon-name="standard:activations" variant="base">
+        <div slot="title">The Publisher</div>
+        <div slot="footer">
+            INADEV Corporation​ <br />
+            Igniting technology. Inspiring possibilities.​
+        </div>
+        <div class="slds-var-p-around_small">
+            <lightning-input
+                type="text"
+                label="Enter a hex color code to fill the circle"
+                max-length="6"
+                min-length="3"
+                required
+                onblur={handleOnblur}
+            ></lightning-input>
+        </div>
+    </lightning-card>
+</template>

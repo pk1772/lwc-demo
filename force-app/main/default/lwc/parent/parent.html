@@ -1,0 +1,29 @@
+<template>
+    <lightning-layout
+        horizontal-align="center"
+        vertical-align="center"
+        multiple-rows
+        class="slds-card slds-var-p-around_medium"
+    >
+        <lightning-layout-item padding="around-medium" size="12">
+            <p>Hello! I am the parent component {parentVariable}!</p>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-medium" size="12">
+            <c-first-child
+                child-variable={parentVariable}
+                onchildinput={handleChildInput}
+            ></c-first-child>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-medium" size="12">
+            <p>{currentDate}</p>
+            <lightning-button
+                variant="brand"
+                label="Display Date"
+                onclick={handleClick}
+            ></lightning-button>
+            <br />
+            <br />
+            {childInput}
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

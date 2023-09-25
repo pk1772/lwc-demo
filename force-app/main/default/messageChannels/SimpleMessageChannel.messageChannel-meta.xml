@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>A simple lightning message channel that will act as event bus between different LWC component communication</description>
+    <isExposed>true</isExposed>
+    <lightningMessageFields>
+        <description>Latitude of the site address</description>
+        <fieldName>Latitude</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <description>Longitude of the site address</description>
+        <fieldName>Longitude</fieldName>
+    </lightningMessageFields>
+    <masterLabel>SimpleMessageChannel</masterLabel>
+</LightningMessageChannel>

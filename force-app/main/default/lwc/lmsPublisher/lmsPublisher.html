@@ -1,0 +1,13 @@
+<template>
+    <lightning-card icon-name="standard:activations" variant="base">
+        <div slot="title">The Publisher</div>
+        <div class="slds-var-p-around_small">
+            <lightning-input type="text" label="Enter an address" required></lightning-input><br />
+            <lightning-button
+                label="Publish"
+                variant="brand"
+                onclick={handleOnclick}
+            ></lightning-button>
+        </div>
+    </lightning-card>
+</template>
