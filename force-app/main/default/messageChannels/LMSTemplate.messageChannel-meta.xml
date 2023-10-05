@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description
+    >A simple lightning message channel that will act as event bus between different LWC component communication</description>
+    <isExposed>true</isExposed>
+    <lightningMessageFields>
+        <description>Pass the value in form of string or object</description>
+        <fieldName>value</fieldName>
+    </lightningMessageFields>
+    <masterLabel>LMSTemplate</masterLabel>
+</LightningMessageChannel>

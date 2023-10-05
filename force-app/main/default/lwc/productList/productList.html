@@ -1,0 +1,16 @@
+<template>
+    <div id="container" class="slds-card">
+        <lightning-layout multiple-rows class="main-container slds-align_absolute-center">
+            <template lwc:if={productList}>
+                <template for:each={productList} for:item="prd">
+                    <lightning-layout-item padding="around-small" key={prd.product.Id}>
+                        <c-product-item product-details={prd}></c-product-item>
+                    </lightning-layout-item>
+                </template>
+            </template>
+            <template lwc:if={error}>
+                <c-error-panel errors={error}></c-error-panel>
+            </template>
+        </lightning-layout>
+    </div>
+</template>

@@ -1,0 +1,22 @@
+org Commands                                                Description
+-----------------------                                     -----------------------
+sf org display -o [TARGET-ORG]                              Output includes your access token, client Id, connected status, 
+                                                            org ID, instance URL, username, and alias, if applicable.
+
+sf org display user -o [TARGET-ORG]                         Output includes the profile name, org ID, access token, 
+                                                            instance URL, login URL, and alias if applicable. Use it to 
+                                                            display information about the admin user of your default scratch org.
+                                        
+sf org generate password                                    Generate a random password for scratch org users.
+
+sf org list                                                 List all orgs you’ve created or authenticated to. 
+                                                            Add --clean : to remove local org authorization info 
+                                                                        about non-active scratch orgs.
+                                                            Add --all : to include all orgs, including expired, deleted, 
+                                                                        and unknown-status orgs.
+sf org open -o [TARGET-ORG] -b [BROWSER] -p [PATH]          To open your default org in your default browser, don't add any parameter
+
+sf org login web -d --a [DEV-HUB-ALIAS]                     Log in to your Dev Hub, set it as your default Dev Hub, and set an alias 
+                                                            that you reference later when you create a scratch org.
+
+sf org login web -r [URL] -a [SANDBOX-ALIAS] -s             Log in to a sandbox and set an alias and as your default org

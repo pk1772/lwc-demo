@@ -1,0 +1,60 @@
+<template>
+    <lightning-card title="Edit Record From Apex" icon-name="standard:record">
+        <div class="slds-var-m-around_medium">
+            <div class="slds-grid">
+                <div class="slds-col slds-size_1-of-2 slds-var-p-horizontal_medium">
+                    <lightning-input
+                        label="Id"
+                        disabled
+                        value={accountId}
+                        class="slds-var-m-bottom_x-small"
+                    ></lightning-input>
+                    <lightning-input
+                        name="name"
+                        label="Name"
+                        onchange={handleChange}
+                        class="slds-m-bottom_x-small"
+                    ></lightning-input>
+                    <!--<lightning-input
+                        name="phone"
+                        label="Phone"
+                        onchange={handleChange}
+                        class="slds-m-bottom_x-small"
+                    ></lightning-input>
+                    <lightning-input
+                        name="website"
+                        label="Website"
+                        onchange={handleChange}
+                        class="slds-m-bottom_x-small"
+                    ></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-var-p-horizontal_medium">
+                    <lightning-combobox
+                        name="type"
+                        label="Type"
+                        value={type}
+                        placeholder="Select Account Type"
+                        options={typeOptions}
+                        onchange={handleChange}
+                        class="slds-m-bottom_x-small"
+                    ></lightning-combobox>
+                    <lightning-combobox
+                        name="industry"
+                        label="Industry"
+                        value={industry}
+                        placeholder="Select Account Industry"
+                        options={industryOptions}
+                        onchange={handleChange}
+                        class="slds-m-bottom_x-small"
+                    ></lightning-combobox>-->
+                </div>
+            </div>
+            <lightning-button
+                label="Update Account"
+                variant="brand"
+                onclick={updateAccount}
+                class="slds-align_absolute-center"
+            ></lightning-button>
+        </div>
+    </lightning-card>
+</template>

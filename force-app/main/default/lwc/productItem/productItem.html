@@ -1,0 +1,127 @@
+<template>
+    <lightning-layout multiple-rows style="box-shadow: 0px 7px 10px 5px rgba(0, 0, 0, 0.06)">
+        <lightning-layout-item padding="around-small" size="12" class="image-section">
+            <template lwc:if={productDetails.product.IsPreOrder__c}>
+                <img
+                    src={iconImageUrl}
+                    alt="time-icon"
+                    width="14px"
+                    height="14px"
+                    class="icon-align"
+                />
+                <lightning-badge class="align-badge" label="PRE-OREDR"> </lightning-badge>
+            </template>
+            <img
+                class="prd-img slds-align_absolute-center"
+                src={productDetails.product.DisplayUrl}
+                alt="product-image"
+            />
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="12" class="data-container">
+            <div class="title-section">
+                <div class="prd-title">{productDetails.product.Name}</div>
+                <div class="prd-description">{productDetails.product.Description}</div>
+            </div>
+            <div class="item-section">
+                <div>
+                    <span class="prd-details-header">Item#: </span>&nbsp;<span
+                        class="prd-details-body"
+                        >{productDetails.product.StockKeepingUnit}</span
+                    >
+                </div>
+                <div>
+                    <span class="prd-details-header">Seller: </span>&nbsp;<span
+                        class="prd-details-body"
+                        >{productDetails.product.Seller.Name}</span
+                    >
+                </div>
+                <div>
+                    <span class="prd-details-header">Available Inventory: </span>&nbsp;<span
+                        class="prd-details-body"
+                        >{productDetails.product.AvailableInventory__c}</span
+                    >
+                </div>
+            </div>
+            <div class="price-section">
+                <lightning-formatted-number
+                    value={productDetails.price}
+                    format-style="currency"
+                    currency-code="USD"
+                ></lightning-formatted-number>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="12" class="qty-section">
+            <span class="slds-align_absolute-center"
+                >QTY<lightning-helptext
+                    content="Qty should be more than 0 to add the product to the cart"
+                    class="align-helptxt"
+                ></lightning-helptext
+            ></span>
+            <div class="slds-form-element__control slds-align_absolute-center">
+                <div>
+                    <button
+                        class="custom-btn_container-left custom-btn slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
+                        title="Remove"
+                        data-name="remove"
+                        onclick={handleItemInteraction}
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="40"
+                            height="40"
+                            viewBox="0 0 40 40"
+                            fill="none"
+                        >
+                            <rect width="40" height="40" rx="20" fill="#a7310c" />
+                            <path
+                                d="M22.5847 19.9077L28.6308 13.8615C28.9077 13.5846 28.9077 13.1692 28.6308 12.8923L27.6616 11.923C27.3847 11.6461 26.9693 11.6461 26.6924 11.923L20.6462 17.9692C20.4616 18.1538 20.1847 18.1538 20.0001 17.9692L13.9539 11.8769C13.677 11.6 13.2616 11.6 12.9847 11.8769L12.0154 12.8461C11.7385 13.123 11.7385 13.5384 12.0154 13.8153L18.0616 19.8615C18.2462 20.0461 18.2462 20.323 18.0616 20.5077L11.9693 26.6C11.6924 26.8769 11.6924 27.2923 11.9693 27.5692L12.9385 28.5384C13.2154 28.8153 13.6308 28.8153 13.9078 28.5384L20.0001 22.4923C20.1847 22.3077 20.4616 22.3077 20.6462 22.4923L26.6924 28.5384C26.9693 28.8153 27.3847 28.8153 27.6616 28.5384L28.6308 27.5692C28.9077 27.2923 28.9077 26.8769 28.6308 26.6L22.5847 20.5538C22.4462 20.3692 22.4462 20.0923 22.5847 19.9077Z"
+                                fill="white"
+                            />
+                        </svg>
+                        <span class="slds-assistive-text">Remove</span>
+                    </button>
+                </div>
+                <input
+                    type="number"
+                    id="default1"
+                    placeholder="0"
+                    value={orderQty}
+                    class="custom-input slds-input slds-input_counter"
+                />
+                <div>
+                    <button
+                        class="custom-btn_container-right custom-btn slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
+                        title="Add"
+                        data-name="add"
+                        onclick={handleItemInteraction}
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="40"
+                            height="40"
+                            viewBox="0 0 40 40"
+                            fill="none"
+                        >
+                            <rect width="40" height="40" rx="20" fill="#06A59A" />
+                            <path
+                                d="M22.5847 19.9077L28.6308 13.8615C28.9077 13.5846 28.9077 13.1692 28.6308 12.8923L27.6616 11.923C27.3847 11.6461 26.9693 11.6461 26.6924 11.923L20.6462 17.9692C20.4616 18.1538 20.1847 18.1538 20.0001 17.9692L13.9539 11.8769C13.677 11.6 13.2616 11.6 12.9847 11.8769L12.0154 12.8461C11.7385 13.123 11.7385 13.5384 12.0154 13.8153L18.0616 19.8615C18.2462 20.0461 18.2462 20.323 18.0616 20.5077L11.9693 26.6C11.6924 26.8769 11.6924 27.2923 11.9693 27.5692L12.9385 28.5384C13.2154 28.8153 13.6308 28.8153 13.9078 28.5384L20.0001 22.4923C20.1847 22.3077 20.4616 22.3077 20.6462 22.4923L26.6924 28.5384C26.9693 28.8153 27.3847 28.8153 27.6616 28.5384L28.6308 27.5692C28.9077 27.2923 28.9077 26.8769 28.6308 26.6L22.5847 20.5538C22.4462 20.3692 22.4462 20.0923 22.5847 19.9077Z"
+                                fill="white"
+                                transform="rotate(45), translate(8, -22)"
+                            />
+                        </svg>
+                        <span class="slds-assistive-text">Add</span>
+                    </button>
+                </div>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="12" class="action-btn-section">
+            <lightning-button
+                variant="brand-outline"
+                label="Add to cart"
+                title="Add to cart"
+                onclick={handleAddToCart}
+                class="slds-align_absolute-center"
+            ></lightning-button>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="LDS View Record" icon-name="standard:record">
+        <lightning-record-view-form record-id={accountId} object-api-name="Account">
+            <div class="slds-grid slds-m-around_medium">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-output-field field-name="Name"></lightning-output-field>
+                    <lightning-output-field field-name="Phone"></lightning-output-field>
+                    <lightning-output-field field-name="Website"></lightning-output-field>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-output-field field-name="Industry"></lightning-output-field>
+                    <lightning-output-field field-name="Type"></lightning-output-field>
+                </div>
+            </div>
+        </lightning-record-view-form>
+    </lightning-card>
+</template>
