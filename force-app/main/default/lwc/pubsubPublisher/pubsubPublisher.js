@@ -2,7 +2,7 @@ import { LightningElement, wire } from 'lwc';
 import { CurrentPageReference } from 'lightning/navigation';
 import { fireEvent } from 'c/pubsub';
 
-export default class PublisherComponent extends LightningElement {
+export default class PubSubPublisher extends LightningElement {
     @wire(CurrentPageReference) pageRef;
 
     handleOnblur(event) {

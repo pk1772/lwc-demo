@@ -1,7 +1,7 @@
 import { LightningElement, wire } from 'lwc';
 import { registerListener, unregisterAllListeners } from 'c/pubsub';
 import { CurrentPageReference } from 'lightning/navigation';
-export default class SubscriberComponent extends LightningElement {
+export default class PubSubSubscriber extends LightningElement {
     @wire(CurrentPageReference) pageRef;
     colorCode = '#fff';
     isRendered = false;

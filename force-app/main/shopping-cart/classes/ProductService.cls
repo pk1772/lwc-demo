@@ -29,7 +29,7 @@ public with sharing class ProductService {
                 WITH SECURITY_ENFORCED
             ];
         } catch (Exception e) {
-            throw new AuraHandledException(e.getMessage());
+            throw new ProductServiceException(e.getMessage());
         }
     }
     public Map<Id, Decimal> getProductStandardPrice(Set<Id> productIds) {

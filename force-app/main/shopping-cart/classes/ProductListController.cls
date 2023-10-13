@@ -9,15 +9,16 @@ public with sharing class ProductListController {
 
             for (Product2 prodt : availableProducts) {
                 orderDetails.add(
-                    new OrderDetails(
-                        prodt,
-                        productAndPrice.containsKey(prodt.Id)
-                            ? productAndPrice.get(prodt.Id)
-                            : 0.00,
-                        0,
-                        DateTime.now(),
-                        null
-                    )
+                    new OrderDetailsBuilder()
+                        .setProduct(prodt)
+                        .setPrice(
+                            productAndPrice.containsKey(prodt.Id)
+                                ? productAndPrice.get(prodt.Id)
+                                : 0.00
+                        )
+                        .setOrderQty(0)
+                        .setOrderDate(DateTime.now())
+                        .setCustomerDetails(null)
                 );
             }
             return orderDetails;
@@ -58,18 +59,5 @@ public with sharing class ProductListController {
         //TO DO
         @AuraEnabled
         public Account customerDetails;
-        public OrderDetails(
-            Product2 product,
-            Decimal price,
-            Integer orderQty,
-            DateTime orderDate,
-            Account customerDetails
-        ) {
-            this.product = product;
-            this.price = price;
-            this.orderQty = orderQty;
-            this.orderDate = orderDate;
-            this.customerDetails = customerDetails;
-        }
     }
 }

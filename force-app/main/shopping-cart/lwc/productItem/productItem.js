@@ -24,7 +24,6 @@ export default class ProductItem extends LightningElement {
     handleAddToCart() {
         let prodWrapper = JSON.parse(JSON.stringify(this.productDetails));
         prodWrapper.orderQty = this.orderQty;
-        console.log('##:' + JSON.stringify(prodWrapper));
         if (this.orderQty > 0) {
             addToCart({ oDetails: JSON.stringify(prodWrapper) })
                 .then((returnValue) => {
