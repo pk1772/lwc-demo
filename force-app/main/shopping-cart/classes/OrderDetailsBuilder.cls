@@ -1,8 +1,8 @@
 public with sharing class OrderDetailsBuilder {
-    private OrderDetails oDetails;
+    private ProductListController.OrderDetails oDetails;
 
     public OrderDetailsBuilder() {
-        oDetails = new OrderDetails();
+        oDetails = new ProductListController.OrderDetails();
     }
     public OrderDetailsBuilder setProduct(Product2 product) {
         oDetails.product = product;
@@ -17,7 +17,7 @@ public with sharing class OrderDetailsBuilder {
         oDetails.orderQty = orderQty;
         return this;
     }
-    public OrderDetailsBuilder setOrderDate(Product2 orderDate) {
+    public OrderDetailsBuilder setOrderDate(DateTime orderDate) {
         oDetails.orderDate = orderDate;
         return this;
     }
@@ -25,7 +25,7 @@ public with sharing class OrderDetailsBuilder {
         oDetails.customerDetails = customerDetails;
         return this;
     }
-    public OrderDetails build() {
+    public ProductListController.OrderDetails build() {
         return oDetails;
     }
 }

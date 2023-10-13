@@ -19,6 +19,7 @@ public with sharing class ProductListController {
                         .setOrderQty(0)
                         .setOrderDate(DateTime.now())
                         .setCustomerDetails(null)
+                        .build()
                 );
             }
             return orderDetails;

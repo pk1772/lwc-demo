@@ -39,9 +39,7 @@ private class Test_ProductListController {
 
         // Call the method to test
         Test.startTest();
-        String result = ProductListController.createSalesOrder(
-            orderDetailsList
-        );
+        String result = ProductListController.createSalesOrder(orderDetailsList);
         Test.stopTest();
 
         // Perform assertions
@@ -54,13 +52,14 @@ private class Test_ProductListController {
         Product2 product = new Product2(Name = 'Test Product', IsActive = true);
         insert product;
 
-        ProductListController.OrderDetails orderDetails = new ProductListController.OrderDetails(
-            product,
-            10.00,
-            5,
-            DateTime.now(),
-            null
-        );
+        ProductListController.OrderDetails orderDetails = new OrderDetailsBuilder()
+            .setProduct(product)
+            .setPrice(10.00)
+            .setOrderQty(5)
+            .setOrderDate(DateTime.now())
+            .setCustomerDetails(null)
+            .build();
+
         String orderDetailsJson = JSON.serialize(orderDetails);
 
         // Call the method to test
